@@ -30,8 +30,6 @@ export default function GitHubSearchContainer() {
 
             setRepos(sortedRepos);
             setPage(pageNumber);
-
-            toast.success(`Found ${userData.name || userData.login}`);
         } catch (err) {
             setUser(null);
             setRepos([]);

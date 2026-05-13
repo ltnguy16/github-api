@@ -13,6 +13,7 @@ export interface GitHubRepo {
     id: number;
     name: string;
     description: string | null;
+    language: string;
     stargazers_count: number;
     html_url: string;
     fork: boolean;

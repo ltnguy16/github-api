@@ -22,7 +22,7 @@ export async function getGitHubUser(username: string): Promise<GitHubUser> {
 // Fetch Repos with Sorting and Pagination
 export async function getGitHubRepos(username: string, page: number): Promise<GitHubRepo[]> {
     const response = await fetch(
-        `https://api.github.com/search/repositories?q=user:${username}+fork:true&per_page=5&page=${page}`,
+        `https://api.github.com/search/repositories?q=user:${username}+fork:true&per_page=6&page=${page}`,
         {
             headers: {
                 "Accept": "application/vnd.github+json",
