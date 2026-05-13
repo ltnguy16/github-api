@@ -20,9 +20,9 @@ export async function getGitHubUser(username: string): Promise<GitHubUser> {
 }
 
 // Fetch Repos with Sorting and Pagination
-export async function getGitHubRepos(username: string, page: number): Promise<GitHubRepo[]> {
+export async function getGitHubRepos(username: string, page: number): Promise<{ items: GitHubRepo[], totalCount: number }> {
     const response = await fetch(
-        `https://api.github.com/search/repositories?q=user:${username}+fork:true&per_page=6&page=${page}`,
+        `https://api.github.com/search/repositories?q=user:${username}+fork:false&per_page=6&page=${page}`,
         {
             headers: {
                 "Accept": "application/vnd.github+json",
@@ -36,9 +36,8 @@ export async function getGitHubRepos(username: string, page: number): Promise<Gi
 
     const data = await response.json();
 
-    if (!data.items || data.items.length === 0) {
-        throw new Error("Not Found");
-    }
-
-    return data.items;
+    return {
+        items: data.items || [],
+        totalCount: data.total_count || 0
+    };
 }

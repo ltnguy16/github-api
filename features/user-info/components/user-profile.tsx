@@ -4,10 +4,13 @@ interface UserProfileProps {
     user: GitHubUser;
     repos: GitHubRepo[];
     page: number;
+    totalCount: number;
     onPageChange: (page: number) => void;
 }
 
-export default function UserProfile({ user, repos, page, onPageChange }: UserProfileProps) {
+export default function UserProfile({ user, repos, page, totalCount, onPageChange }: UserProfileProps) {
+    const totalPages = Math.ceil(totalCount / 6);
+
     return (
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
             <section className="profile-card">
@@ -55,8 +58,8 @@ export default function UserProfile({ user, repos, page, onPageChange }: UserPro
                     ← Previous
                 </button>
 
-                <span className="text-xs font-black uppercase tracking-widest text-gray-400">
-                    Page {page}
+                <span className="text-xs font-black uppercase tracking-widest text-[var(--teal-mid)]">
+                    Page {page} of {totalPages || 1}
                 </span>
 
                 <button

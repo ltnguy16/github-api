@@ -11,6 +11,7 @@ export default function GitHubSearchContainer() {
     const [user, setUser] = useState<GitHubUser | null>(null);
     const [repos, setRepos] = useState<GitHubRepo[]>([]);
     const [page, setPage] = useState(1);
+    const [totalCount, setTotalCount] = useState(0);
     const [loading, setLoading] = useState(false);
 
     const handleSearch = async (username: string, pageNumber: number = 1) => {
@@ -22,13 +23,22 @@ export default function GitHubSearchContainer() {
             if (!userData || userData.public_repos == 0) {
                 throw new Error("No Public Repo");
             }
-            const repoData = await getGitHubRepos(username, pageNumber);
+            const { items: repoData, totalCount } = await getGitHubRepos(username, pageNumber);
+
+            if (pageNumber === 1 && repoData.length === 0) {
+                throw new Error("EMPTY_REPOS");
+            }
+
+            if (repoData.length === 0) {
+                toast.error("No more repositories found");
+                return;
+            }
 
             const sortedRepos = [...repoData].sort((a, b) => b.stargazers_count - a.stargazers_count);
 
             setUser(userData);
-
             setRepos(sortedRepos);
+            setTotalCount(totalCount);
             setPage(pageNumber);
         } catch (err) {
             setUser(null);
@@ -72,6 +82,7 @@ export default function GitHubSearchContainer() {
                     user={user}
                     repos={repos}
                     page={page}
+                    totalCount={totalCount}
                     onPageChange={(newPage) => handleSearch(query, newPage)}
                 />
             )}

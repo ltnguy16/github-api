@@ -22,3 +22,18 @@
 9. Add Github token to allow more search
 
 10. Add color palletes Tranquil Greenscape at (link)[https://www.higocreative.com/blog/website-color-palettes]
+
+11. Upload to Vercel to host (website)[https://github-api-five-wine.vercel.app/]
+
+12. Fix Totalcount error and display
+
+### Tech Stack
+
+#### Core Framework
+* Next.js 
+* React
+* Typescript
+
+#### Styling Design
+* Tailwind
+
