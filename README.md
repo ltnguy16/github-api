@@ -20,3 +20,5 @@
 8. Update css
 
 9. Add Github token to allow more search
+
+10. Add color palletes Tranquil Greenscape at (link)[https://www.higocreative.com/blog/website-color-palettes]

@@ -3,6 +3,13 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --sage-light: #BFD6C1;
+  --teal-soft: #A2D7D6;
+  --teal-mid: #96C4BB;
+  --green-muted: #709584;
+  --teal-deep: #507C7C;
+  --cream-bg: #FDF6E3;
+  --off-white: #F7F9F7;
 }
 
 @theme inline {
@@ -21,7 +28,7 @@
 
 @layer components {
   .search-container {
-    @apply max-w-3xl mx-auto px-4 py-12 min-h-screen antialiased space-y-8;
+    @apply max-w-3xl mx-auto px-4 py-12 min-h-screen antialiased space-y-8 bg-[var(--off-white)];
   }
 
   .search-form {
@@ -29,36 +36,35 @@
   }
 
   .input-field {
-    @apply flex-grow h-12 px-4 rounded-lg border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all placeholder:text-gray-400 shadow-sm;
+    @apply flex-grow h-12 px-4 rounded-xl border border-[var(--sage-light)] bg-white focus:outline-none focus:ring-2 focus:ring-[var(--green-muted)] focus:border-transparent transition-all placeholder:text-[var(--teal-mid)] shadow-sm;
   }
 
   .btn-primary {
-    @apply h-12 px-8 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 active:scale-95 disabled:bg-gray-400 disabled:scale-100 transition-all shadow-md sm:w-auto min-w-[140px] flex items-center justify-center whitespace-nowrap;
+    @apply h-12 px-8 bg-[var(--teal-deep)] text-white font-bold rounded-xl hover:bg-[#406363] active:scale-95 disabled:bg-[var(--sage-light)] transition-all shadow-md min-w-[140px] flex items-center justify-center;
   }
 
   .profile-card {
-    @apply flex flex-col sm:flex-row items-center sm:items-start gap-6 bg-gray-50 p-6 rounded-2xl border border-gray-100 mt-12;
+    @apply flex flex-col sm:flex-row items-center sm:items-start gap-8 bg-white p-8 rounded-3xl border border-[var(--sage-light)] shadow-xl shadow-[var(--sage-light)]/20 mt-12;
   }
 
   .stat-badge {
-    @apply bg-white px-3 py-1 rounded-full border shadow-sm text-sm font-medium;
+    @apply bg-[var(--off-white)] text-[var(--teal-deep)] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider border border-[var(--teal-soft)];
   }
 
   .repo-grid {
-    /* Use a 2-column grid on larger screens */
     @apply grid grid-cols-1 md:grid-cols-2 gap-4 mt-6;
   }
 
   .repo-card {
-    @apply flex flex-col justify-between p-5 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md hover:border-black/10 transition-all duration-300 h-full min-h-[120px];
+    @apply flex flex-col justify-between p-5 bg-white border border-[var(--teal-soft)]/30 rounded-2xl shadow-sm hover:shadow-md hover:border-[var(--teal-mid)] transition-all duration-300 h-full min-h-[120px];
   }
 
   .star-badge {
-    @apply inline-flex items-center gap-1.5 text-xs font-bold bg-amber-50 text-amber-600 px-2.5 py-1 rounded-lg border border-amber-100 mt-3 self-start;
+    @apply inline-flex items-center gap-1.5 text-xs font-bold bg-[var(--cream-bg)] text-[var(--green-muted)] px-2.5 py-1 rounded-lg border border-[var(--sage-light)] mt-3 self-start;
   }
 
   .btn-pagination {
-    @apply p-2 w-32 font-medium border border-gray-200 rounded-lg hover:bg-gray-50 disabled:opacity-20 transition-all;
+    @apply px-6 py-2 font-bold text-sm border-2 border-[var(--green-muted)] text-[var(--green-muted)] rounded-xl hover:bg-[var(--green-muted)] hover:text-white disabled:opacity-20 disabled:border-[var(--sage-light)] transition-all active:scale-95;
   }
 }
 
