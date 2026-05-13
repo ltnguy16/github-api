@@ -1,5 +1,6 @@
-'use client'
+'use server'
 import { GitHubUser, GitHubRepo } from '@/typing/typing';
+import { config } from '../components/config';
 
 // Fetch Basic User Info
 export async function getGitHubUser(username: string): Promise<GitHubUser> {
@@ -7,6 +8,7 @@ export async function getGitHubUser(username: string): Promise<GitHubUser> {
         headers: {
             "Accept": "application/vnd.github+json",
             "X-GitHub-Api-Version": "2026-03-10",
+            "Authorization": `Bearer ${config.githubToken}`,
         }
     });
 
@@ -25,6 +27,7 @@ export async function getGitHubRepos(username: string, page: number): Promise<Gi
             headers: {
                 "Accept": "application/vnd.github+json",
                 "X-GitHub-Api-Version": "2026-03-10",
+                "Authorization": `Bearer ${config.githubToken}`,
             }
         }
     );

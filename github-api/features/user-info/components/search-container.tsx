@@ -11,13 +11,11 @@ export default function GitHubSearchContainer() {
     const [user, setUser] = useState<GitHubUser | null>(null);
     const [repos, setRepos] = useState<GitHubRepo[]>([]);
     const [page, setPage] = useState(1);
-    const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
 
     const handleSearch = async (username: string, pageNumber: number = 1) => {
         if (!username) return;
         setLoading(true);
-        setError(null);
 
         try {
             const userData = await getGitHubUser(username);

@@ -18,3 +18,5 @@
 7. Add checks for no public repo
 
 8. Update css
+
+9. Add Github token to allow more search

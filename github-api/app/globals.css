@@ -23,6 +23,18 @@
   .search-container {
     @apply max-w-3xl mx-auto px-4 py-12 min-h-screen antialiased space-y-8;
   }
+
+  .search-form {
+    @apply flex flex-col sm:flex-row gap-3 w-full;
+  }
+
+  .input-field {
+    @apply flex-grow h-12 px-4 rounded-lg border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all placeholder:text-gray-400 shadow-sm;
+  }
+
+  .btn-primary {
+    @apply h-12 px-8 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 active:scale-95 disabled:bg-gray-400 disabled:scale-100 transition-all shadow-md sm:w-auto min-w-[140px] flex items-center justify-center whitespace-nowrap;
+  }
 }
 
 body {
