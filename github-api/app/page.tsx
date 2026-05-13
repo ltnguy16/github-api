@@ -1,13 +1,10 @@
-import SearchUser from "@/features/user-info/components/search-user";
+import GitHubSearchContainer from "@/features/user-info/components/search-container";
 
 export default function Home() {
   return (
     <div>
       <main>
-        <h1>
-          Initial page
-        </h1>
-        <SearchUser />
+        <GitHubSearchContainer />
       </main>
     </div>
   );
