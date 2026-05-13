@@ -60,15 +60,16 @@ export default function GitHubSearchContainer() {
     };
 
     return (
-        <div className="max-w-2xl mx-auto p-6 text-black">
+        <main className="search-container">
+            <header className="text-center space-y-2">
+                <h1 className="text-4xl font-extrabold tracking-tight">GitHub Explorer</h1>
+            </header>
             <SearchForm
                 query={query}
                 setQuery={setQuery}
                 onSearch={() => handleSearch(query, 1)}
                 loading={loading}
             />
-
-            {error && <p className="text-red-500 mt-4">{error}</p>}
 
             {user && (
                 <UserProfile
@@ -78,6 +79,6 @@ export default function GitHubSearchContainer() {
                     onPageChange={(newPage) => handleSearch(query, newPage)}
                 />
             )}
-        </div>
+        </main>
     );
 }
