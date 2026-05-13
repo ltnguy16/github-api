@@ -21,11 +21,15 @@ export default function GitHubSearchContainer() {
 
         try {
             const userData = await getGitHubUser(username);
+            if (!userData || userData.public_repos == 0) {
+                throw new Error("No Public Repo");
+            }
             const repoData = await getGitHubRepos(username, pageNumber);
 
             const sortedRepos = [...repoData].sort((a, b) => b.stargazers_count - a.stargazers_count);
 
             setUser(userData);
+
             setRepos(sortedRepos);
             setPage(pageNumber);
 
@@ -36,10 +40,15 @@ export default function GitHubSearchContainer() {
 
             let message = "An unexpected error occurred";
             if (err instanceof Error) {
-                if (err.message.includes("Not Found")) {
+                console.log("Caught error message:", err.message);
+                if (err.message === "USER_NOT_FOUND" || err.message.includes("Not Found")) {
                     message = `User "${username}" not found`;
-                } else if (err.message.includes("403")) {
+                } else if (err.message === "RATE_LIMIT" || err.message.includes("403")) {
                     message = "GitHub API rate limit exceeded";
+                } else if (err.message === "EMPTY_REPOS") {
+                    message = "This user has no public repositories";
+                } else {
+                    message = err.message
                 }
             }
 

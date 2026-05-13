@@ -9,7 +9,11 @@ export async function getGitHubUser(username: string): Promise<GitHubUser> {
             "X-GitHub-Api-Version": "2026-03-10",
         }
     });
-    if (!response.ok) throw new Error(response.statusText);
+
+    if (response.status === 404) throw new Error("USER_NOT_FOUND");
+    if (response.status === 403) throw new Error("RATE_LIMIT");
+    if (!response.ok) throw new Error("GENERIC_ERROR");
+
     return await response.json();
 }
 
@@ -28,5 +32,10 @@ export async function getGitHubRepos(username: string, page: number): Promise<Gi
     if (!response.ok) throw new Error("Failed to fetch repos");
 
     const data = await response.json();
+
+    if (!data.items || data.items.length === 0) {
+        throw new Error("Not Found");
+    }
+
     return data.items;
 }
