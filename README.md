@@ -1,5 +1,25 @@
-## Project Creation
 
+
+## Run the project
+The project can be access at [link](https://github-api-five-wine.vercel.app/) or run locally by running the command ```npm run dev``` and going to localhost
+
+## Tradeoff 
+Instead of a build in error message on page, I added a toast which is more mordern for web developement. It make the page less busy but it need more design time to make the css better
+
+## Time management
+I actually finish the core requirement around the 2 hours mark and I spend an hour and a half on aesthetic.
+There was no theme or direction so I just choose a random color pallete that seem easy on the eye. 
+I didn't create a switch for darkmode. 
+The toast could be better design
+The button and cards could be design with a little pop-out when hovering over it instead of just highlightng it. 
+
+## Assumption
+It seem like the project only need an api call so I mainly focus on the frontend, there is no backend. 
+
+I did run into the rate-limit issue and added my git token to allow the 5000 result. I do have check for 403 error to handle the rate-limit error. 
+My Github token is in a local .env.local file and set up as an Enviromental Variable on Vercel, and it is not made public. The website will work whether a token is setup or not.
+
+## Project Creation
 ### Steps
 
 1. Creating initial template, run the command 
@@ -36,4 +56,6 @@
 
 #### Styling Design
 * Tailwind
+
+
 
